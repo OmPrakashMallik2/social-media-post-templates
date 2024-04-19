@@ -51,17 +51,18 @@ function Twitter() {
   const handleChangeCaption = (event) => {
     setCaption(event.target.value);
   }
+
   return (
     <div>
       <div>
         <h1 className='bg-blue-500 font-bold text-xl lg:text-2xl text-center text-white py-5 lg:p-8'>Twitter post template</h1>
       </div>
 
-      <div className='flex justify-between bg-green-200 p-3'>
+      <div className='flex flex-col lg:flex-row justify-between py-5'>
 
-        <div className='w-1/2 bg-purple-300 p-5'>
+        <div className='lg:w-1/2 flex flex-col items-center'>
 
-          <div id='print' className='w-[375px] h-[500px] bg-black text-white flex flex-col justify-center p-10 gap-5'>
+          <div id='print' className='w-[300px] lg:w-[375px] h-[400px] lg:h-[500px] bg-black text-white flex flex-col justify-center p-10 gap-5'>
             <div className='flex items-center justify-start gap-2'>
               <Avatar alt="Remy Sharp" src={image} />
               <div className=''>
@@ -72,19 +73,20 @@ function Twitter() {
                 <p className='text-neutral-400 font-bold'>@{username}</p>
               </div>
             </div>
-            <div className=' '>
+            <div className=''>
               <p className='text-left text-lg font-semibold'>{caption}</p>
             </div>
           </div>
-
-          <Button className='flex justify-center items-center' variant="contained" onClick={handleDownloadImage}>
-            Download Image
-          </Button>
+          <div className='flex justify-center p-2'>
+            <Button className='flex justify-center items-center' variant="contained" onClick={handleDownloadImage}>
+              Download Image
+            </Button>
+          </div>
 
         </div>
 
 
-        <div className='bg-pink-300 text-neutral-700 w-1/2 p-5 flex flex-col justify-between'>
+        <div className='bg-pink-300 text-neutral-700 lg:w-1/2 p-5 flex flex-col justify-between'>
 
           <div>
             <input onChange={handleChangeName} value={fullName} type='text' placeholder='Name' />
