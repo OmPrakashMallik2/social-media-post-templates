@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/tweeter' element={<Twitter />} />
+        <Route path='/twitter' element={<Twitter />} />
       </Routes>
     </div>
   );

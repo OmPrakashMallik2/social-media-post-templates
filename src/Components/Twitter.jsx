@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { Avatar, Button, Switch } from '@mui/material'
 import VerifiedIcon from '@mui/icons-material/Verified';
 import html2canva from 'html2canvas';
@@ -53,9 +53,36 @@ function Twitter() {
   }
   return (
     <div>
+      <div>
+        <h1 className='bg-blue-500 font-bold text-xl lg:text-2xl text-center text-white py-5 lg:p-8'>Twitter post template</h1>
+      </div>
 
-      <h1 className='text-2xl text-center font-bold text-blue-500'>Twitter Post Template</h1>
-      <div className='flex justify-between p-3'>
+      <div className='flex justify-between bg-green-200 p-3'>
+
+        <div className='w-1/2 bg-purple-300 p-5'>
+
+          <div id='print' className='w-[375px] h-[500px] bg-black text-white flex flex-col justify-center p-10 gap-5'>
+            <div className='flex items-center justify-start gap-2'>
+              <Avatar alt="Remy Sharp" src={image} />
+              <div className=''>
+                <div className='flex items-center gap-1'>
+                  <p className='font-bold'>{fullName}</p>
+                  {blueTick && < VerifiedIcon fontSize="small" className='text-blue-400' />}
+                </div>
+                <p className='text-neutral-400 font-bold'>@{username}</p>
+              </div>
+            </div>
+            <div className=' '>
+              <p className='text-left text-lg font-semibold'>{caption}</p>
+            </div>
+          </div>
+
+          <Button className='flex justify-center items-center' variant="contained" onClick={handleDownloadImage}>
+            Download Image
+          </Button>
+
+        </div>
+
 
         <div className='bg-pink-300 text-neutral-700 w-1/2 p-5 flex flex-col justify-between'>
 
@@ -83,30 +110,6 @@ function Twitter() {
               inputProps={{ 'aria-label': 'controlled' }}
             />
           </div>
-
-        </div>
-
-        <div className='w-1/2 bg-purple-300 p-5'>
-
-          <div id='print' className='w-[375px] h-[500px] bg-black text-white flex flex-col justify-center p-10 gap-5'>
-            <div className='flex items-center justify-start gap-2'>
-              <Avatar alt="Remy Sharp" src={image} />
-              <div className=''>
-                <div className='flex items-center gap-1'>
-                  <p className='font-bold'>{fullName}</p>
-                  {blueTick && < VerifiedIcon fontSize="small" className='text-blue-400' />}
-                </div>
-                <p className='text-neutral-400 font-bold'>@{username}</p>
-              </div>
-            </div>
-            <div className=' '>
-              <p className='text-left text-lg font-semibold'>{caption}</p>
-            </div>
-          </div>
-
-          <Button className='flex justify-center items-center' variant="contained" onClick={handleDownloadImage}>
-            Download Image
-          </Button>
 
         </div>
       </div>
