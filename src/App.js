@@ -1,10 +1,15 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
+import Twitter from './Components/Twitter';
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/tweeter' element={<Twitter />} />
+      </Routes>
     </div>
   );
 }
