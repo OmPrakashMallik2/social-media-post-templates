@@ -1,12 +1,55 @@
-import React from 'react'
-import myPhoto from './Media/myPhoto.jpg'
-import { Avatar, Button } from '@mui/material'
+import React, { useRef, useState } from 'react'
+import { Avatar, Button, Switch } from '@mui/material'
 import VerifiedIcon from '@mui/icons-material/Verified';
+import html2canva from 'html2canvas';
 
 function Twitter() {
 
+  const [blueTick, setBlueTick] = useState(false);
+  const [fullName, setFullName] = useState('Full Name');
+  const [username, setUsername] = useState('username');
+  const [image, setImage] = useState(null);
+  const [caption, setCaption] = useState('Enjoy the journey. Enjoy every moment and quit worrying about winning and losing.');
+
   const handleDownloadImage = () => {
-    console.log("donload image");
+    const content = document.getElementById('print');
+    html2canva(content).then((canvas) => {
+      const dataURL = canvas.toDataURL('image/jpg')
+
+      const link = document.createElement('a');
+      link.download = 'post.jpg';
+      link.href = dataURL;
+
+      link.click();
+    })
+  }
+
+  const handleChange = () => {
+    setBlueTick(!blueTick)
+  }
+
+  const handleChangeName = (event) => {
+    setFullName(event.target.value);
+  }
+
+  const handleChangeusername = (event) => {
+    setUsername(event.target.value);
+  }
+
+  const handleChangeImage = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImage(reader.result); // Setting the image state to base64 string
+    };
+    if (file) {
+      reader.readAsDataURL(file); // Reading the file as a data URL
+    }
+  };
+
+
+  const handleChangeCaption = (event) => {
+    setCaption(event.target.value);
   }
   return (
     <div>
@@ -14,47 +57,51 @@ function Twitter() {
       <h1 className='text-2xl text-center font-bold text-blue-500'>Twitter Post Template</h1>
       <div className='flex justify-between p-3'>
 
-        <div className='bg-pink-300 w-1/2 p-5'>
+        <div className='bg-pink-300 text-neutral-700 w-1/2 p-5 flex flex-col justify-between'>
 
           <div>
-            <input type='text' placeholder='Name' />
+            <input onChange={handleChangeName} value={fullName} type='text' placeholder='Name' />
           </div>
 
           <div>
-            <input type='text' placeholder='usename' />
+            <input onChange={handleChangeusername} value={username} type='text' placeholder='usename' />
           </div>
 
           <div>
-            <input type='file' placeholder='profile picture' />
+            <input onChange={handleChangeImage} type='file' placeholder='profile picture' />
           </div>
 
           <div>
-            <input type='text' placeholder='Content' />
+            <textarea onChange={handleChangeCaption} value={caption} type='text' placeholder='Content' />
+          </div>
+
+          <div className='flex items-center'>
+            <p className='font-bold'>Blue Tick</p>
+            <Switch
+              label="iOS style"
+              onChange={handleChange}
+              inputProps={{ 'aria-label': 'controlled' }}
+            />
           </div>
 
         </div>
 
         <div className='w-1/2 bg-purple-300 p-5'>
 
-          <div class="relative" style="padding-top: 56.25%;">
-
-
-            <div className='bg-black text-white flex flex-col'>
-              <div className='flex items-center justify-center gap-2'>
-                <Avatar alt="Remy Sharp" src={myPhoto} />
-                <div className=''>
-                  <div className='flex items-center gap-1'>
-                    <p className='font-bold'>Om Prakash Mallik</p>
-                    < VerifiedIcon fontSize="small" className='text-blue-400' />
-                  </div>
-                  <p className='text-neutral-400'>@omprakashmallik</p>
+          <div id='print' className='w-[375px] h-[500px] bg-black text-white flex flex-col justify-center p-10 gap-5'>
+            <div className='flex items-center justify-start gap-2'>
+              <Avatar alt="Remy Sharp" src={image} />
+              <div className=''>
+                <div className='flex items-center gap-1'>
+                  <p className='font-bold'>{fullName}</p>
+                  {blueTick && < VerifiedIcon fontSize="small" className='text-blue-400' />}
                 </div>
-              </div>
-              <div>
-                <p className='text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim magnam cupiditate ab eos saepe quidem ipsa cum, reprehenderit non blanditiis autem quisquam inventore quis, voluptas sit deleniti laborum aliquam sequi?</p>
+                <p className='text-neutral-400 font-bold'>@{username}</p>
               </div>
             </div>
-          
+            <div className=' '>
+              <p className='text-left text-lg font-semibold'>{caption}</p>
+            </div>
           </div>
 
           <Button className='flex justify-center items-center' variant="contained" onClick={handleDownloadImage}>
