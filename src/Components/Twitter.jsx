@@ -104,7 +104,7 @@ function Twitter() {
         </div>
 
 
-        <div class=' text-neutral-700 lg:w-1/2 lg:p-10 flex flex-col justify-between'>
+        <div class=' text-neutral-700 lg:w-1/2 p-5 lg:p-10 flex flex-col justify-between'>
 
           <div>
             <input class="border-2 rounded-md p-2 w-full" onChange={handleChangeName} value={fullName} type='text' placeholder='Name' />
