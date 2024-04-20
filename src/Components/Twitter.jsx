@@ -49,8 +49,24 @@ function Twitter() {
 
 
   const handleChangeCaption = (event) => {
-    setCaption(event.target.value);
+    const newValue = event.target.value.replace(/ {2,}/g, '  ').replace(/\n\n+/g, '\n\n');
+    setCaption(newValue);
   }
+  const handleKeyDown = (event) => {
+    // Check if the pressed key is Enter
+    if (event.key === 'Enter') {
+      // Prevent the default behavior of adding a new line in the textarea
+      event.preventDefault();
+      // Insert a newline character at the current cursor position
+      const textarea = event.target;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      setCaption(textarea.value.substring(0, start) + '\n' + textarea.value.substring(end));
+      // Move the cursor to the position after the inserted newline
+      textarea.selectionStart = textarea.selectionEnd = start + 1;
+    }
+  }
+
 
   return (
     <div>
@@ -63,10 +79,10 @@ function Twitter() {
         <div className='lg:w-1/2 flex flex-col items-center'>
 
           <div id='print' className='w-[300px] lg:w-[375px] h-[400px] lg:h-[500px] bg-black text-white flex flex-col justify-center p-10 gap-5'>
-            <div className='flex items-center justify-start gap-2'>
+            <div className='flex justify-start items-center gap-2'>
               <Avatar alt="Remy Sharp" src={image} />
               <div className=''>
-                <div className='flex items-center gap-1'>
+                <div className='flex justify-center items-center'>
                   <p className='font-bold'>{fullName}</p>
                   {blueTick && < VerifiedIcon fontSize="small" className='text-blue-400' />}
                 </div>
@@ -74,6 +90,8 @@ function Twitter() {
               </div>
             </div>
             <div className=''>
+              {/* <div className="text-left text-lg font-semibold" dangerouslySetInnerHTML={{ __html: caption.replace(/ /g, '&nbsp;&nbsp;').replace(/\n/g, '<br>') }} /> */}
+
               <p className='text-left text-lg font-semibold'>{caption}</p>
             </div>
           </div>
@@ -86,26 +104,33 @@ function Twitter() {
         </div>
 
 
-        <div className='bg-pink-300 text-neutral-700 lg:w-1/2 p-5 flex flex-col justify-between'>
+        <div class=' text-neutral-700 lg:w-1/2 lg:p-10 flex flex-col justify-between'>
 
           <div>
-            <input onChange={handleChangeName} value={fullName} type='text' placeholder='Name' />
+            <input class="border-2 rounded-md p-2 w-full" onChange={handleChangeName} value={fullName} type='text' placeholder='Name' />
           </div>
 
           <div>
-            <input onChange={handleChangeusername} value={username} type='text' placeholder='usename' />
+            <input class="border-2 rounded-md p-2 w-full mt-2" onChange={handleChangeusername} value={username} type='text' placeholder='Username' />
           </div>
 
           <div>
-            <input onChange={handleChangeImage} type='file' placeholder='profile picture' />
+            <p>Add a picture</p>
+            <input class="mt-2" onChange={handleChangeImage} type='file' placeholder='Profile picture' />
           </div>
 
           <div>
-            <textarea onChange={handleChangeCaption} value={caption} type='text' placeholder='Content' />
+            <textarea
+              class="border-2 rounded-md p-2 w-full mt-2"
+              onChange={handleChangeCaption}
+              value={caption}
+              placeholder='Content'
+              onKeyDown={handleKeyDown}
+            />
           </div>
 
-          <div className='flex items-center'>
-            <p className='font-bold'>Blue Tick</p>
+          <div class='flex items-center mt-2'>
+            <p class='font-bold mr-2 text-blue-400'>Blue Tick</p>
             <Switch
               label="iOS style"
               onChange={handleChange}
@@ -114,6 +139,8 @@ function Twitter() {
           </div>
 
         </div>
+
+
       </div>
     </div>
   )
