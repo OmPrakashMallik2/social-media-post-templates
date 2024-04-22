@@ -77,7 +77,7 @@ function Twitter() {
                 <p className='font-bold text-sm'>{fullName}</p>
                 <p className='text-neutral-500 font-bold text-sm' >@{username}</p>
               </div>
-              <div className='mb-7'>
+              <div className=''>
                 <VerifiedIcon fontSize='small' className='text-blue-400' />
               </div>
             </div>
