@@ -10,7 +10,7 @@ function Twitter() {
   const [username, setUsername] = useState('username');
   const [image, setImage] = useState(null);
   const [caption, setCaption] = useState(
-    'Enjoy the journey. Enjoy every moment and quit worrying about winning and losing.'
+    'Write your thought...'
   );
 
   const handleDownloadImage = () => {
@@ -65,17 +65,17 @@ function Twitter() {
       <div className='flex flex-col lg:flex-row justify-between py-5 px-5 lg:px-10'>
         <div className='lg:w-1/2 flex flex-col items-center'>
 
-          <div id='print' className='w-[300px] lg:w-[375px] h-[400px] lg:h-[500px] bg-black text-white flex flex-col justify-center p-10 gap-5'>
+          <div id='print' className=' w-[300px] lg:w-[375px] h-[400px] lg:h-[500px] bg-black text-white flex flex-col justify-center p-10 gap-5'>
 
             {/* start */}
 
-            <div className='flex gap-2 items-center bg-red-100 text-white'>
+            <div className='flex gap-2 items-center '>
               <div>
                 <Avatar alt='Remy Sharp' src={image} />
               </div>
               <div className='flex flex-col mb-5 justify-start'>
-                <p className='font-bold'>{fullName}</p>
-                <p>@{username}</p>
+                <p className='font-bold text-sm'>{fullName}</p>
+                <p className='text-neutral-500 font-bold text-sm' >@{username}</p>
               </div>
               <div className='mb-7'>
                 {blueTick && <VerifiedIcon fontSize='small' className='text-blue-400' />}
@@ -87,7 +87,7 @@ function Twitter() {
 
             <div className='p-2 rounded-md'>
               <p
-                className='text-left font-semibold'
+                className='text-left text-sm font-semibold'
                 style={{ wordWrap: 'break-word' }}
                 dangerouslySetInnerHTML={{ __html: caption.replace(/ /g, '&nbsp;&nbsp;').replace(/\n/g, '<br>') }}
               />
@@ -114,7 +114,7 @@ function Twitter() {
           <div className='mt-4'>
             <Textarea
               placeholder='Type in here…'
-              defaultValue='Try to put text longer than 4 lines.'
+              defaultValue={caption}
               minRows={2}
               maxRows={4}
               onChange={handleChangeCaption}
