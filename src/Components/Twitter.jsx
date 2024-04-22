@@ -69,7 +69,7 @@ function Twitter() {
 
             {/* start */}
 
-            <div className='flex gap-2 items-center bg-black text-white'>
+            <div className='flex gap-2 items-center bg-red-100 text-white'>
               <div>
                 <Avatar alt='Remy Sharp' src={image} />
               </div>
