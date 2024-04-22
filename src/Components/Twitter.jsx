@@ -66,19 +66,23 @@ function Twitter() {
         <div className='lg:w-1/2 flex flex-col '>
 
           <div id='print' className='w-[300px] lg:w-[375px] h-[400px] lg:h-[500px] bg-black text-white flex flex-col justify-center p-10 gap-5'>
-            
-            <div className='flex justify-start'>
-              <div className='flex items-end '>
+
+            {/* start */}
+
+            <div className='flex gap-2 items-center bg-black text-white'>
+              <div>
                 <Avatar alt='Remy Sharp' src={image} />
               </div>
-              <div className='flex flex-col justify-start ml-1 rounded-md'>
-                <p className='font-bold text-white'>{fullName}</p>
-                <p className='text-neutral-400 font-bold'>@{username}</p>
+              <div className='flex flex-col mb-5 justify-start'>
+                <p className='font-bold'>{fullName}</p>
+                <p>@{username}</p>
               </div>
-              <div className='ml-1 flex items-center '>
+              <div className='mb-7'>
                 {blueTick && <VerifiedIcon fontSize='small' className='text-blue-400' />}
               </div>
             </div>
+
+            {/* end */}
 
 
             <div className='p-2 rounded-md'>
