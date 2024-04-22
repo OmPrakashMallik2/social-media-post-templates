@@ -78,7 +78,7 @@ function Twitter() {
                 <p className='text-neutral-500 font-bold text-sm' >@{username}</p>
               </div>
               <div className='mb-7'>
-                {blueTick && <VerifiedIcon fontSize='small' className='text-blue-400' />}
+                <VerifiedIcon fontSize='small' className='text-blue-400' />
               </div>
             </div>
 
