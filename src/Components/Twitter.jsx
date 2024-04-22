@@ -69,15 +69,15 @@ function Twitter() {
 
             {/* start */}
 
-            <div className='flex gap-2 items-center '>
-              <div>
+            <div className='flex items-center '>
+              <div className='mr-1.5'>
                 <Avatar alt='Remy Sharp' src={image} />
               </div>
               <div className='flex flex-col mb-5 justify-start'>
                 <p className='font-bold text-sm'>{fullName}</p>
                 <p className='text-neutral-500 font-bold text-sm' >@{username}</p>
               </div>
-              <div className=''>
+              <div className='mb-7 -ml-1'>
                 <VerifiedIcon fontSize='small' className='text-blue-400' />
               </div>
             </div>
