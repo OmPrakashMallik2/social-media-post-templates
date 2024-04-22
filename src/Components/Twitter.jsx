@@ -10,7 +10,7 @@ function Twitter() {
   const [username, setUsername] = useState('username');
   const [image, setImage] = useState(null);
   const [caption, setCaption] = useState(
-    'Write your thought...'
+    'Write your thought here...'
   );
 
   const handleDownloadImage = () => {
@@ -68,10 +68,9 @@ function Twitter() {
           <div id='print' className=' w-[300px] lg:w-[375px] h-[400px] lg:h-[500px] bg-black text-white flex flex-col justify-center p-10 gap-5'>
 
             {/* start */}
-
-            <div className='flex items-center '>
+            {/* <div className='flex items-center '>
               <div className='mr-1.5'>
-                <Avatar alt='Remy Sharp' src={image} />
+                <Avatar alt='Remy Sharp' className='object-cover object-center' src={image} />
               </div>
               <div className='flex flex-col mb-5 justify-start'>
                 <p className='font-bold text-sm'>{fullName}</p>
@@ -80,7 +79,23 @@ function Twitter() {
               <div className='mb-7 -ml-1'>
                 <VerifiedIcon fontSize='small' className='text-blue-400' />
               </div>
+            </div> */}
+
+            <div className='flex items-center'>
+              <div className='mr-1.5'>
+                <Avatar alt='Remy Sharp' className='object-cover object-center' src={image} />
+              </div>
+              <div className='flex flex-col justify-start'>
+                <div className='flex items-center'> {/* Wrap full name and verified icon in a flex container */}
+                  <p className='font-bold text-sm'>{fullName}</p>
+                  <div className='ml-1'> {/* Add margin between full name and verified icon */}
+                    <VerifiedIcon fontSize='small' className='text-blue-400' />
+                  </div>
+                </div>
+                <p className='text-neutral-500 font-bold text-sm'>@{username}</p>
+              </div>
             </div>
+
 
             {/* end */}
 
