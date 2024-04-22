@@ -56,14 +56,14 @@ function Twitter() {
 
   return (
     <div>
-      <div>
+      <div className='w-full'>
         <h1 className='bg-blue-500 font-bold text-xl lg:text-2xl text-center text-white py-5 lg:p-8'>
           Twitter Post Template
         </h1>
       </div>
 
       <div className='flex flex-col lg:flex-row justify-between py-5 px-5 lg:px-10'>
-        <div className='lg:w-1/2 flex flex-col '>
+        <div className='lg:w-1/2 flex flex-col items-center'>
 
           <div id='print' className='w-[300px] lg:w-[375px] h-[400px] lg:h-[500px] bg-black text-white flex flex-col justify-center p-10 gap-5'>
 
@@ -96,7 +96,7 @@ function Twitter() {
 
           <div className='flex justify-center p-2'>
             <Button variant='contained' onClick={handleDownloadImage}>
-              Download Image
+              Download Post
             </Button>
           </div>
         </div>
@@ -106,9 +106,9 @@ function Twitter() {
           <br />
           <TextField onChange={handleChangeusername} id='outlined-basic' label='Username' variant='outlined' />
 
-          <div className='mt-4'>
-            <p>Add a Picture</p>
-            <input className='mt-2' onChange={handleChangeImage} type='file' placeholder='Profile picture' />
+          <div className='mt-4 bg-blue-300 rounded'>
+            <p className='text-center py-1 font-bold'>Click to Add Picture</p>
+            <input className='mt-2 cursor-pointer' onChange={handleChangeImage} type='file' placeholder='Profile picture' />
           </div>
 
           <div className='mt-4'>
