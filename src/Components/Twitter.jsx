@@ -68,31 +68,21 @@ function Twitter() {
           <div id='print' className=' w-[300px] lg:w-[375px] h-[400px] lg:h-[500px] bg-black text-white flex flex-col justify-center p-10 gap-5'>
 
             {/* start */}
-            {/* <div className='flex items-center '>
+            <div className='flex items-center '>
               <div className='mr-1.5'>
-                <Avatar alt='Remy Sharp' className='object-cover object-center' src={image} />
+                <Avatar
+                  alt='Remy Sharp'
+                  sx={{ width: 34, height: 34 }}
+                  className='object-cover object-center'
+                  src={image}
+                />
               </div>
               <div className='flex flex-col mb-5 justify-start'>
-                <p className='font-bold text-sm'>{fullName}</p>
-                <p className='text-neutral-500 font-bold text-sm' >@{username}</p>
+                <p className='font-semibold text-sm'>{fullName}</p>
+                <p className='text-neutral-500 font-semibold text-sm' >@{username}</p>
               </div>
               <div className='mb-7 -ml-1'>
                 <VerifiedIcon fontSize='small' className='text-blue-400' />
-              </div>
-            </div> */}
-
-            <div className='flex items-center'>
-              <div className='mr-1.5'>
-                <Avatar alt='Remy Sharp' className='object-cover object-center' src={image} />
-              </div>
-              <div className='flex flex-col justify-start'>
-                <div className='flex items-center'> {/* Wrap full name and verified icon in a flex container */}
-                  <p className='font-bold text-sm'>{fullName}</p>
-                  <div className='ml-1'> {/* Add margin between full name and verified icon */}
-                    <VerifiedIcon fontSize='small' className='text-blue-400' />
-                  </div>
-                </div>
-                <p className='text-neutral-500 font-bold text-sm'>@{username}</p>
               </div>
             </div>
 
@@ -102,7 +92,7 @@ function Twitter() {
 
             <div className='p-2 rounded-md'>
               <p
-                className='text-left text-sm font-semibold'
+                className='text-left text-sm'
                 style={{ wordWrap: 'break-word' }}
                 dangerouslySetInnerHTML={{ __html: caption.replace(/ /g, '&nbsp;&nbsp;').replace(/\n/g, '<br>') }}
               />
