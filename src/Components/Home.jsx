@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import myPhoto from './Media/post (4).jpg'
+import myPhoto from './Media/post (5).jpg'
 import { Button } from '@mui/material'
 
 function Home() {
