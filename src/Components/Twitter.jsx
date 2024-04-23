@@ -74,7 +74,7 @@ function Twitter() {
 
   return (
     <div>
-      <div className='flex justify-center items-center bg-blue-500  w-full'>
+      <div className='flex justify-center items-center gap-2 bg-blue-500  w-full'>
         <Button
           onClick={() => navigate("/")}
           variant="contained"
@@ -89,7 +89,6 @@ function Twitter() {
 
           <div id='print' className=' w-[300px] lg:w-[375px] h-[400px] lg:h-[500px] bg-black text-white flex flex-col justify-center p-10 gap-5'>
 
-            {/* start */}
             <div className='flex items-center '>
               <div className='mr-1.5'>
                 <Avatar
@@ -108,10 +107,6 @@ function Twitter() {
               </div>
             </div>
 
-
-            {/* end */}
-
-
             <div className='p-2 rounded-md'>
               <p
                 className='text-left text-base'
@@ -128,9 +123,9 @@ function Twitter() {
           </div>
         </div>
 
-        <div className='text-neutral-700 lg:w-1/2 p-5 lg:p-10 flex flex-col justify-between'>
+        <div className='text-neutral-700 gap-3 lg:w-1/2 p-4 lg:p-10 flex flex-col justify-between'>
           <TextField onChange={handleChangeName} id='outlined-basic' label='Full Name' variant='outlined' />
-          {/* <br /> */}
+
           <TextField onChange={handleChangeusername} id='outlined-basic' label='Username' variant='outlined' />
 
           <Button
@@ -144,16 +139,13 @@ function Twitter() {
             <VisuallyHiddenInput onChange={handleChangeImage} type="file" />
           </Button>
 
-
-          {/* <div className='mt-4'> */}
-            <Textarea
-              placeholder='Type in here…'
-              defaultValue={caption}
-              minRows={2}
-              maxRows={4}
-              onChange={handleChangeCaption}
-            />
-          {/* </div> */}
+          <Textarea
+            placeholder='Type in here…'
+            defaultValue={caption}
+            minRows={2}
+            maxRows={4}
+            onChange={handleChangeCaption}
+          />
 
           <div className='flex items-center'>
             <p className='font-bold mr-2 text-blue-400'>Blue Tick</p>
